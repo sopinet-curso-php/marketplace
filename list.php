@@ -128,6 +128,9 @@
                             </div>
                             
                         <div class="adds-wrapper jobs-list">
+                            <?php
+                                for ($i = 0; $i < 5; $i++) {
+                            ?>                            
                             <div class="item-list job-item">
 
 
@@ -147,7 +150,12 @@
                                                 class=" icon-money"> </i> 10€</span></span>
 
                                         <div class="jobs-desc">
-                                            Un viaje entretenido y seguro, no me gusta correr. Además, pararemos a mitad de camino para tomar una rica tostada de sobraasada, y luego, directos a Huelva.
+                                            <?php
+                                                $text = "Un viaje entretenido y seguro, no me gusta correr. Además, pararemos a mitad de camino para tomar una rica tostada de sobraasada, y luego, directos a Huelva.";
+                                                $shortText = substr($text, 0, 80);
+                                                echo $shortText;
+                                            ?>
+                                            ...
                                         </div>
 
 
@@ -170,6 +178,9 @@
                                 <!--/.add-desc-box-->
                             </div>
                             <!--/.job-item-->
+                            <?php
+                                }
+                            ?>                            
                         </div>
                     </div>    
                 </div>    
@@ -178,11 +189,15 @@
             </div>
         </div>
     </div>    
+    
+    <?php
+        $year = date("Y");
+    ?>     
         
     <div class="footer" id="footer">
         <div class="container">
             <ul class=" pull-right navbar-link footer-nav">
-                <li> &copy; 2016 - development by Sopinet Software</li>
+                <li> &copy; <?php echo $year;?> - development by Sopinet Software</li>
             </ul>
         </div>
     </div>

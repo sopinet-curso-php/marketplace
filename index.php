@@ -187,11 +187,15 @@
         </div>
     </div>
 
+    <?php
+        $year = date("Y");
+    ?>            
+
 
     <div class="footer" id="footer">
         <div class="container">
             <ul class=" pull-right navbar-link footer-nav">
-                <li> &copy; 2016 - development by Sopinet Software</li>
+                <li> &copy; <?php echo $year;?> - development by Sopinet Software</li>
             </ul>
         </div>
     </div>
