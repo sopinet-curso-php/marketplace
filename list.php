@@ -111,6 +111,41 @@
                     </aside>
                 </div>
                 
+<?php
+                $trayectos = array(
+                    0 => array(
+                        "conductor" => "Antonio Pérez",
+                        "avatar" => "https://addons.cdn.mozilla.net/user-media/userpics/0/0/45.png?modified=1447324257",
+                        "trayecto" => "Córdoba a Huelva",
+                        "calle" => "Calle Poeta Paredes, 25",
+                        "hora" => "9:00",
+                        "precio" => "10€",
+                        "descripcion" => "Un viaje entretenido y seguro, no me gusta correr. Además, pararemos a mitad de camino para tomar una rica tostada de sobraasada, y luego, directos a Huelva.",
+                        "plazas" => 3
+                    ),
+                    1 => array(
+                        "conductor" => "Antonio García",
+                        "avatar" => "http://megaforo.com/images/user4.png",
+                        "trayecto" => "Sevilla a Cádiz",
+                        "calle" => "Ronda de Marrubial, 12",
+                        "hora" => "12:30",
+                        "precio" => "6€",
+                        "descripcion" => "¿Quieres un viaje de riesgo? Soy tu conductor. Comparte coche conmigo y vive una aventura que recordarás por los siglos de los siglos.",
+                        "plazas" => 2
+                    ),
+                    2 => array(
+                        "conductor" => "Pedro Boniato",
+                        "avatar" => "http://gh.nsrrc.org.tw/Content/img/male05.png",
+                        "trayecto" => "Córdoba a Málaga",
+                        "calle" => "Calle de la Glorieta, 11",
+                        "hora" => "10:30",
+                        "precio" => "9€",
+                        "descripcion" => "Salida de Córdoba a Málaga, por favor, confirmar lo antes posible ya que suele llenarse rápido el viaje. Posibilidad de seguir después de Málaga hasta Marbella que será mi destino final.",
+                        "plazas" => 4
+                    )                              
+                );
+?>
+                
                 <!--/.page-side-bar-->
                 <div class="col-sm-9 page-content col-thin-left">
                     <div class="category-list">
@@ -120,7 +155,7 @@
                             <div class="col-lg-12  box-title no-border">
                                 <div class="inner">
                                     <h2><span> Trayectos </span> publicados
-                                        <small> 1 resultado encontrado</small>
+                                        <small> <?php echo count($trayectos);?> resultado encontrado</small>
 
 
                                     </h2>
@@ -129,30 +164,29 @@
                             
                         <div class="adds-wrapper jobs-list">
                             <?php
-                                for ($i = 0; $i < 5; $i++) {
+                                for ($i = 0; $i < count($trayectos); $i++) {
                             ?>                            
                             <div class="item-list job-item">
 
 
                                 <div class="col-sm-1  col-xs-2 no-padding photobox">
                                     <div class="add-image"><a href=""><img class="thumbnail no-margin"
-                                                                           src="https://addons.cdn.mozilla.net/user-media/userpics/0/0/45.png?modified=1447324257"
-                                                                           alt="Avatar de Usuario"></a></div>
+                                                                           src="<?php echo $trayectos[$i]['avatar'];?>"
+                                                                           alt="Avatar de <?php echo $trayectos[$i]['conductor'];?>"></a></div>
                                 </div>
                                 <!--/.photobox-->
                                 <div class="col-sm-10  col-xs-10  add-desc-box">
                                     <div class="add-details jobs-item">
-                                        <h5 class="company-title"><a href="">Antonio Pérez</a></h5>
-                                        <h4 class="job-title"><a href="job-details.html"> Córdoba a Huelva </a></h4>
+                                        <h5 class="company-title"><a href=""><?php echo $trayectos[$i]['conductor'];?></a></h5>
+                                        <h4 class="job-title"><a href="job-details.html"> <?php echo $trayectos[$i]['trayecto'];?> </a></h4>
                                         <span class="info-row">  <span class="item-location"><i
-                                                class="fa fa-map-marker"></i> Calle Poeta Paredes, 25 </span> <span class="date"><i
-                                                class=" icon-clock"> </i>9:00</span><span class=" salary">	<i
-                                                class=" icon-money"> </i> 10€</span></span>
+                                                class="fa fa-map-marker"></i> <?php echo $trayectos[$i]['calle'];?> </span> <span class="date"><i
+                                                class=" icon-clock"> </i><?php echo $trayectos[$i]['hora'];?></span><span class=" salary">	<i
+                                                class=" icon-money"> </i> <?php echo $trayectos[$i]['precio'];?></span></span>
 
                                         <div class="jobs-desc">
                                             <?php
-                                                $text = "Un viaje entretenido y seguro, no me gusta correr. Además, pararemos a mitad de camino para tomar una rica tostada de sobraasada, y luego, directos a Huelva.";
-                                                $shortText = substr($text, 0, 80);
+                                                $shortText = substr($trayectos[$i]['descripcion'], 0, 80);
                                                 echo $shortText;
                                             ?>
                                             ...
@@ -164,7 +198,7 @@
                                                 <li>
                                                     <span class="save-job">
                                                         <span class="fa fa-users"></span>
-                                                        3 plazas
+                                                        <?php echo $trayectos[$i]["plazas"];?> plazas
                                                     </span>
                                                 </li>
                                             </ul>
