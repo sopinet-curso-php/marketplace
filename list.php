@@ -144,7 +144,9 @@
                         "plazas" => 4
                     )                              
                 );
-?>
+                
+                ?>
+                
                 
                 <!--/.page-side-bar-->
                 <div class="col-sm-9 page-content col-thin-left">
