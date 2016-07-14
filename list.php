@@ -114,8 +114,10 @@
 <?php
                 include 'Trayecto.php';
                 
-                $trayectoCordobaAHuelva = new Trayecto();
-                $trayectoCordobaAHuelva->llenarObjeto(
+                // Creamos un objeto de tipo Trayecto y lo asignamos a la variable trayecto1
+                $trayecto1 = new Trayecto();
+                // Rellenamos el objeto con una serie de datos
+                $trayecto1->llenarObjeto(
                     "Antonio Pérez",
                     "https://addons.cdn.mozilla.net/user-media/userpics/0/0/45.png?modified=1447324257",
                     "Córdoba",
@@ -127,11 +129,42 @@
                     "3"
                 );
                 
+                // Creamos un objeto de tipo Trayecto y lo asignamos a la variable trayecto2
                 $trayecto2 = new Trayecto();
-                $trayecto2->copiarObjetoConModificaciones($trayectoCordobaAHuelva);
+                // Rellenamos el objeto con una serie de datos
+                $trayecto2->llenarObjeto(
+                    "Antonio García",
+                    "http://megaforo.com/images/user4.png",
+                    "Sevilla",
+                    "Cádiz",
+                    "Ronda de Marrubial, 12",
+                    "12:30",
+                    "6€",
+                    "¿Quieres un viaje de riesgo? Soy tu conductor. Comparte coche conmigo y vive una aventura que recordarás por los siglos de los siglos.",
+                    "2"
+                );
                 
+                 // Creamos un objeto de tipo Trayecto y lo asignamos a la variable trayecto3
+                $trayecto3 = new Trayecto();
+                // Rellenamos el objeto con una serie de datos
+                $trayecto3->llenarObjeto(
+                    "Pedro Boniato",
+                    "http://gh.nsrrc.org.tw/Content/img/male05.png",
+                    "Córdoba",
+                    "Málaga",
+                    "Calle de la Glorieta, 11",
+                    "10:30",
+                    "9€",
+                    "Salida de Córdoba a Málaga, por favor, confirmar lo antes posible ya que suele llenarse rápido el viaje. Posibilidad de seguir después de Málaga hasta Marbella que será mi destino final.",
+                    "4"
+                );
 
-                $trayectos = array($trayectoCordobaAHuelva, $trayecto2);
+                // Creamos una variable trayectos de tipo array, donde almacenaremos los 3 trayectos creados más arriba
+                $trayectos = array(
+                    $trayecto1,
+                    $trayecto2,
+                    $trayecto3
+                );
                 
                 
                 // Recorremos el array original trayectos para buscar los trayectos a filtrar

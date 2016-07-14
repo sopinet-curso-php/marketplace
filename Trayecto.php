@@ -10,28 +10,11 @@ class Trayecto {
     var $descripcion;
     var $plazas;
     
-    function copiarObjetoConModificaciones(Trayecto $trayecto) {
-        $this->copiarObjeto($trayecto);
-        if ($this->origen == "Córdoba") {
-            $this->origen = "Málaga";
-        }
-    }
-    
     /**
-     * Copia un objeto completo pasado por parámetro
-    **/ 
-    function copiarObjeto(Trayecto $trayecto) {
-        $this->conductor = $trayecto->conductor;
-        $this->avatar = $trayecto->avatar;
-        $this->origen = $trayecto->origen;
-        $this->destino = $trayecto->destino;
-        $this->calle = $trayecto->calle;
-        $this->hora = $trayecto->hora;
-        $this->precio = $trayecto->precio;
-        $this->descripcion = $trayecto->descripcion;
-        $this->plazas = $trayecto->plazas;
-    }
-    
+     * Rellena este objeto con una serie de datos pasados por parámetro
+     * 
+     * @return void
+     **/ 
     function llenarObjeto($p1, $p2, $p3, $p4, $p5, $p6, $p7, $p8, $p9) {
         $this->conductor = $p1;
         $this->avatar = $p2;
@@ -45,7 +28,9 @@ class Trayecto {
     }
     
     /**
-     * Pediente: Hay que terminar esta función
+     * Devuelve la descripción corta (80 primeros caracteres) del objeto
+     * 
+     * @return string
      **/ 
     function getDescripcionCorta() {
         $descripcionCorta = substr($this->descripcion, 0, 80);
@@ -69,7 +54,4 @@ class Trayecto {
         }
     }
 }
-
-
-
 ?>
