@@ -69,7 +69,7 @@
 
                     <p class="sub animateme fittext3 animated fadeIn"> Ahorra combustible y haz amigos en la plataforma de Comparte Tu Coche </p>
 
-                    <form name="search" action="list.html" method="GET">
+                    <form name="search" action="list.php" method="GET">
                         <div class="row search-row animated fadeInUp">
                             <div class="col-lg-6 col-sm-6 search-col relative locationicon">
                                 <i class="icon-location-2 icon-append"></i>

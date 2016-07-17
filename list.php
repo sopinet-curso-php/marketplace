@@ -36,6 +36,74 @@
     </script>
     <script src="assets/js/pace.min.js"></script>
 </head>
+
+<?php
+                /**
+                 * Ejemplo 1: Array de objetos
+                 * Declara un Array de objetos, lo inicializa y lo immprime por pantalla.
+                 ***************************************************************************
+                 
+                class TrayectoSimple {
+                    var $origen;
+                    var $destino;
+                    
+                    function dimeElTrayecto() {
+                        return $this->origen . " a " . $this->destino;
+                    }
+                }
+                
+                $b = new TrayectoSimple();
+                $b->origen = "Huelva";
+                $b->destino = "Córdoba";
+                
+                $a = array();
+                $a[0] = $b;
+                $a[1] = $b;
+                
+                echo '<pre>';
+                var_dump($a);
+                echo '</pre>';
+                
+                die($b->dimeElTrayecto());
+                **/
+                
+                
+
+
+                /** 
+                 * Ejemplo 2: Array bidimensional de enteros
+                 * Declara un Array bidimensional de eneteros, lo inicializa y lo imprime por pantalla.
+                 * ************************************************************************************
+                 
+                $a = array(
+                    array(15,12,7,123,12,32,23,4), // Fila 0
+                    array(103,189,190,6,5,3,12,32), // Fila 1
+                    array(89,45,23,0,-12,23,12,12), // Fila 2
+                    array(1,3,4,5,7,9,0,1), // Fila 3
+                    array(9,30,1,0,90,09,01,12) // Fila 4
+                );
+                
+                // Recorre las filas
+                for ($i = 0; $i < count($a); $i++) {
+                    $b = $a[$i]; // Asignar una nueva variable a una fila de la tabla
+                    
+                    // Recorre las columnas por cada fila
+                    for($j = 0; $j < count($b); $j++) {
+                        
+                        if ($b[$j] == 1) {
+                            echo '<b>' . $b[$j] . '</b>';
+                        } else {
+                            echo $b[$j];
+                        }
+                        
+                        echo ", ";
+                    }
+                    
+                    echo '<br/>';
+                }
+                **/   
+?>
+
 <body>
 <div id="wrapper">
     <div class="header">
@@ -60,17 +128,20 @@
     <div class="search-row-wrapper"
          style="background-image: url(images/jobs/ibg.jpg); background-size: cover; background-position: center center;">
         <div class="container text-center">
-            <div class="col-sm-3 col-sm-offset-3">
-                <select class="form-control" name="category" id="search-category">
-                    <option selected="selected" value="">Localidad</option>
-                    <option value="111">Huelva</option>
-                    <option value="111">Cordoba</option>
-                    <option value="111">Sevilla</option>
-                </select>    
-            </div>
-            <div class="col-sm-3">
-                <button class="btn btn-block btn-primary"> Buscar trayectos <i class="fa fa-search"></i></button>
-            </div>
+            <form name="filter" action="list.php" method="GET">
+                <input type="hidden" name="posted" value="<?php echo $_GET["posted"];?>"/>
+                <div class="col-sm-3 col-sm-offset-3">
+                    <select class="form-control" name="country" id="country">
+                        <option <?php if ($_GET["country"] == "") { ?> selected="selected" <?php } ?>value="">Todas las localidades</option>
+                        <option <?php if ($_GET["country"] == "Huelva") { ?> selected="selected" <?php } ?>value="Huelva">Huelva</option>
+                        <option <?php if ($_GET["country"] == "Córdoba") { ?> selected="selected" <?php } ?>value="Córdoba">Cordoba</option>
+                        <option <?php if ($_GET["country"] == "Sevilla") { ?> selected="selected" <?php } ?>value="Sevilla">Sevilla</option>
+                    </select>    
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-block btn-primary"> Buscar trayectos <i class="fa fa-search"></i></button>
+                </div>
+            </form>
         </div>
     </div>    
 
@@ -80,38 +151,47 @@
 <!-- this (.mobile-filter-sidebar) part will be position fixed in mobile version -->
                 <div class="col-sm-3 page-sidebar mobile-filter-sidebar">
                     <aside>
-                        <div class="inner-box">
-                            <div class=" list-filter">
-                                <h5 class="list-title"><strong><a href="#"> Fecha de publicación </a></strong></h5>
-
-                                <div class="filter-date filter-content">
-                                    <ul>
-                                        <li>
-                                            <input type="radio" value="1" id="posted_1" name="posted">
-                                            <label for="posted_1">24 horas</label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" value="3" id="posted_3" name="posted">
-                                            <label for="posted_3">3 días</label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" value="7" id="posted_7" name="posted">
-                                            <label for="posted_7">7 días</label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" checked="checked" value="30" id="posted_30"
-                                                   name="posted">
-                                            <label for="posted_30">30 días</label>
-                                        </li>
-                                    </ul>
+                        <form name="filtros" method="GET" action="list.php">
+                            <input type="hidden" name="country" value="<?php echo $_GET["country"];?>"/>
+                            <div class="inner-box">
+                                <div class=" list-filter">
+                                    <h5 class="list-title"><strong><a href="#"> Fecha de publicación </a></strong></h5>
+    
+                                    <div class="filter-date filter-content">
+                                        <ul>
+                                            <li>
+                                                <input type="radio" <?php if ($_GET["posted"] == "" || $_GET["posted"] == 0) { ?> checked="checked" <?php } ?>value="0" id="posted_0" name="posted">
+                                                <label for="posted_0">Todos</label>
+                                            </li>
+                                            <li>
+                                                <input type="radio" <?php if ($_GET["posted"] == "1") { ?> checked="checked" <?php } ?>value="1" id="posted_1" name="posted">
+                                                <label for="posted_1">24 horas</label>
+                                            </li>
+                                            <li>
+                                                <input type="radio" <?php if ($_GET["posted"] == "3") { ?> checked="checked" <?php } ?>value="3" id="posted_3" name="posted">
+                                                <label for="posted_3">3 días</label>
+                                            </li>
+                                            <li>
+                                                <input type="radio" <?php if ($_GET["posted"] == "7") { ?> checked="checked" <?php } ?>value="7" id="posted_7" name="posted">
+                                                <label for="posted_7">7 días</label>
+                                            </li>
+                                            <li>
+                                                <input type="radio" <?php if ($_GET["posted"] == "30") { ?> checked="checked" <?php } ?>value="30" id="posted_30"
+                                                       name="posted">
+                                                <label for="posted_30">30 días</label>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
+                                <!--/.categories-list-->
                             </div>
-                            <!--/.categories-list-->
-                        </div>
+                            <input type="submit" class="btn btn-primary btn-block button" value="Filtrar"/>
+                        </form>
                     </aside>
                 </div>
                 
 <?php
+                // Incluimos el fichero para la clase Trayecto
                 include 'Trayecto.php';
                 
                 // Creamos un objeto de tipo Trayecto y lo asignamos a la variable trayecto1
@@ -123,6 +203,7 @@
                     "Córdoba",
                     "Huelva",
                     "Calle Poeta Paredes, 25",
+                    1468713600,
                     "9:00",
                     "10€",
                     "Un viaje entretenido y seguro, no me gusta correr. Además, pararemos a mitad de camino para tomar una rica tostada de sobraasada, y luego, directos a Huelva.",
@@ -138,6 +219,7 @@
                     "Sevilla",
                     "Cádiz",
                     "Ronda de Marrubial, 12",
+                    1468281600,
                     "12:30",
                     "6€",
                     "¿Quieres un viaje de riesgo? Soy tu conductor. Comparte coche conmigo y vive una aventura que recordarás por los siglos de los siglos.",
@@ -153,6 +235,7 @@
                     "Córdoba",
                     "Málaga",
                     "Calle de la Glorieta, 11",
+                    1467331200,
                     "10:30",
                     "9€",
                     "Salida de Córdoba a Málaga, por favor, confirmar lo antes posible ya que suele llenarse rápido el viaje. Posibilidad de seguir después de Málaga hasta Marbella que será mi destino final.",
@@ -166,16 +249,38 @@
                     $trayecto3
                 );
                 
-                
-                // Recorremos el array original trayectos para buscar los trayectos a filtrar
-                for($i = 0; $i < count($trayectos); $i = $i + 1) {
-                    if ($trayectos[$i]->tieneOrigen($_GET["country"])) {
-                        $trayectosFiltrados[] = $trayectos[$i];
+                // Si no se indica un filtro para la fecha, se muestran todos los trayectos
+                if ($_GET["posted"] == "") {
+                    $trayectosFiltradosFecha = $trayectos;
+                // Si hay filtro de fecha se hace búsqueda    
+                } else {
+                    $trayectosFiltradosFecha = array();
+                    for ($i = 0; $i < count($trayectos); $i = $i + 1) {
+                        // Comienza nuestro bucle
+                            if ($trayectos[$i]->filtroFecha($_GET["posted"])) {
+                                $trayectosFiltradosFecha[$i] = $trayectos[$i];
+                            }
+                        // Termina nuestro bucle
                     }
                 }
                 
+                // Si no se indica filtro, se muestran todos los Trayectos
+                if ($_GET['country'] == "") {
+                    $trayectosFiltrados = $trayectosFiltradosFecha;
+                // Si se indica el filtro, se filtran los proyectos    
+                } else {
+                    $trayectosFiltrados = array();
+                    // Recorremos el array original trayectos para buscar los trayectos a filtrar
+                    for($i = 0; $i < count($trayectosFiltradosFecha); $i = $i + 1) {
+                        // Comienza nuestro bucle                
+                            if ($trayectosFiltradosFecha[$i]->buscar($_GET["country"])) {
+                                $trayectosFiltrados[] = $trayectosFiltradosFecha[$i];
+                            }
+                        // Termina nuestro bucle
+                    }
+                }
+                    
                 ?>
-                
                 
                 <!--/.page-side-bar-->
                 <div class="col-sm-9 page-content col-thin-left">
@@ -210,10 +315,12 @@
                                     <div class="add-details jobs-item">
                                         <h5 class="company-title"><a href=""><?php echo $trayectosFiltrados[$i]->conductor;?></a></h5>
                                         <h4 class="job-title"><a href="job-details.html"> <?php echo $trayectosFiltrados[$i]->origen;?> a <?php echo $trayectosFiltrados[$i]->destino;?> </a></h4>
-                                        <span class="info-row">  <span class="item-location"><i
-                                                class="fa fa-map-marker"></i> <?php echo $trayectosFiltrados[$i]->calle;?> </span> <span class="date"><i
-                                                class=" icon-clock"> </i><?php echo $trayectosFiltrados[$i]->hora;?></span><span class=" salary">	<i
-                                                class=" icon-money"> </i> <?php echo $trayectosFiltrados[$i]->precio;?></span></span>
+                                        <span class="info-row">
+                                            <span class="item-location"><i class="fa fa-map-marker"></i> <?php echo $trayectosFiltrados[$i]->calle;?> </span> 
+                                            <span class="date"><i class=" icon-clock"> </i><?php echo $trayectosFiltrados[$i]->hora;?></span>
+                                            <span class="salary"><i class=" icon-money"> </i> <?php echo $trayectosFiltrados[$i]->precio;?></span>
+                                            <span class="date"><i class="icon-calendar"> </i> <?php echo $trayectosFiltrados[$i]->getFechaPublicacion();?></span>
+                                        </span>
 
                                         <div class="jobs-desc">
                                             <?php
