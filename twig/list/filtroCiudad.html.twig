@@ -1,0 +1,19 @@
+<div class="search-row-wrapper"
+     style="background-image: url(images/jobs/ibg.jpg); background-size: cover; background-position: center center;">
+    <div class="container text-center">
+        <form name="filter" action="main.php" method="GET">
+            <input type="hidden" name="posted" value="{{ posted }}"/>
+            <div class="col-sm-3 col-sm-offset-3">
+                <select class="form-control" name="country" id="country">
+                    <option {% if country == "" %} selected="selected" {% endif %} value="">Todas las localidades</option>
+                    <option {% if country == "Huelva" %} selected="selected" {% endif %} value="Huelva">Huelva</option>
+                    <option {% if country == "Córdoba" %} selected="selected" {% endif %} value="Córdoba">Cordoba</option>
+                    <option {% if country == "Sevilla" %} selected="selected" {% endif %} value="Sevilla">Sevilla</option>
+                </select>    
+            </div>
+            <div class="col-sm-3">
+                <button class="btn btn-block btn-primary"> Buscar trayectos <i class="fa fa-search"></i></button>
+            </div>
+        </form>
+    </div>
+</div> 

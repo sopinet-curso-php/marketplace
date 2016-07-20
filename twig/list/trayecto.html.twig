@@ -1,0 +1,43 @@
+<div class="item-list job-item">
+    <div class="col-sm-1  col-xs-2 no-padding photobox">
+        <div class="add-image"><a href=""><img class="thumbnail no-margin"
+                                               src="<?php echo $trayectosFiltrados[$i]->avatar;?>"
+                                               alt="Avatar de <?php echo $trayectosFiltrados[$i]->conductor;?>"></a></div>
+    </div>
+    <!--/.photobox-->
+    <div class="col-sm-10  col-xs-10  add-desc-box">
+        <div class="add-details jobs-item">
+            <h5 class="company-title"><a href=""><?php echo $trayectosFiltrados[$i]->conductor;?></a></h5>
+            <h4 class="job-title"><a href="job-details.html"> <?php echo $trayectosFiltrados[$i]->origen;?> a <?php echo $trayectosFiltrados[$i]->destino;?> </a></h4>
+            <span class="info-row">
+                <span class="item-location"><i class="fa fa-map-marker"></i> <?php echo $trayectosFiltrados[$i]->calle;?> </span> 
+                <span class="date"><i class=" icon-clock"> </i><?php echo $trayectosFiltrados[$i]->hora;?></span>
+                <span class="salary"><i class=" icon-money"> </i> <?php echo $trayectosFiltrados[$i]->precio;?></span>
+                <span class="date"><i class="icon-calendar"> </i> <?php echo $trayectosFiltrados[$i]->getFechaPublicacion();?></span>
+            </span>
+
+            <div class="jobs-desc">
+                <?php
+                    echo $trayectosFiltrados[$i]->getDescripcionCorta();
+                ?>
+            </div>
+
+
+            <div class="job-actions">
+                <ul class="list-unstyled list-inline">
+                    <li>
+                        <span class="save-job">
+                            <span class="fa fa-users"></span>
+                            <?php echo $trayectosFiltrados[$i]->plazas;?> plazas
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+    <!--/.add-desc-box-->
+
+    <!--/.add-desc-box-->
+</div>
