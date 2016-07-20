@@ -99,6 +99,7 @@ if ($_GET['country'] == "") {
 
 
 echo $twig->render('list.html.twig', array(
+        'year' => date('Y'),
         'country' => $_GET["country"],
         'posted' => $_GET["posted"],
         'trayectos' => $trayectosFiltrados

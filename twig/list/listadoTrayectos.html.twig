@@ -1,5 +1,4 @@
 <div class="category-list">
-    {{ dump() }}
     <div class="tab-box clearfix ">
         <!-- Nav tabs -->
         <div class="col-lg-12  box-title no-border">
@@ -12,6 +11,8 @@
         </div>
         
     <div class="adds-wrapper jobs-list">
-        
+        {% for trayecto in trayectos %}
+            {% include "list/trayecto.html.twig" with {'trayecto': trayecto} %}
+        {% endfor %}
     </div>
 </div>

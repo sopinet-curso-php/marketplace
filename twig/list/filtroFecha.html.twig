@@ -1,1 +1,38 @@
-PENDIENTE DE HACER
+<aside>
+    <form name="filtros" method="GET" action="main.php">
+        <input type="hidden" name="country" value="{{ country }}"/>
+        <div class="inner-box">
+            <div class=" list-filter">
+                <h5 class="list-title"><strong><a href="#"> Fecha de publicación </a></strong></h5>
+
+                <div class="filter-date filter-content">
+                    <ul>
+                        <li>
+                            <input type="radio" {% if posted == "" or posted == 0 %} checked="checked" {% endif %}value="0" id="posted_0" name="posted">
+                            <label for="posted_0">Todos</label>
+                        </li>
+                        <li>
+                            <input type="radio" {% if posted == 1 %} checked="checked" {% endif %} value="1" id="posted_1" name="posted">
+                            <label for="posted_1">24 horas</label>
+                        </li>
+                        <li>
+                            <input type="radio" {% if posted == 3 %} checked="checked" {% endif %} value="3" id="posted_3" name="posted">
+                            <label for="posted_3">3 días</label>
+                        </li>
+                        <li>
+                            <input type="radio" {% if posted == 7 %} checked="checked" {% endif %} value="7" id="posted_7" name="posted">
+                            <label for="posted_7">7 días</label>
+                        </li>
+                        <li>
+                            <input type="radio" {% if posted == 30 %} checked="checked" {% endif %} value="30" id="posted_30"
+                                   name="posted">
+                            <label for="posted_30">30 días</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--/.categories-list-->
+        </div>
+        <input type="submit" class="btn btn-primary btn-block button" value="Filtrar"/>
+    </form>
+</aside>
