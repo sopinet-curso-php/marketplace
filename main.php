@@ -97,16 +97,18 @@ if ($_GET['country'] == "") {
     }
 }
 
-echo $twig->render('pruebaExtend/prueba.html.twig');
-
-/**
-echo $twig->render('list.html.twig', array(
-        'year' => date('Y'),
-        'country' => $_GET["country"],
-        'posted' => $_GET["posted"],
-        'trayectos' => $trayectosFiltrados
-    )
-);
-**/
+if ($_GET["page"] == "list") {
+    echo $twig->render('list.html.twig', array(
+            'year' => date('Y'),
+            'country' => $_GET["country"],
+            'posted' => $_GET["posted"],
+            'trayectos' => $trayectosFiltrados
+        )
+    );
+} else {
+    echo $twig->render('index.html.twig', array(
+        
+    ));
+}
 
 ?>
