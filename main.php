@@ -97,7 +97,9 @@ if ($_GET['country'] == "") {
     }
 }
 
+echo $twig->render('pruebaExtend/prueba.html.twig');
 
+/**
 echo $twig->render('list.html.twig', array(
         'year' => date('Y'),
         'country' => $_GET["country"],
@@ -105,6 +107,6 @@ echo $twig->render('list.html.twig', array(
         'trayectos' => $trayectosFiltrados
     )
 );
-
+**/
 
 ?>
