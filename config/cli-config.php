@@ -13,7 +13,7 @@ $isDevMode = false;
 // the connection configuration
 $dbParams = array(
     'driver'   => 'pdo_mysql',
-    'user'     => 'hidabel',
+    'user'     => 'hidabe',
     'password' => '',
     'dbname'   => 'market_place',
     'host' => '0.0.0.0'
