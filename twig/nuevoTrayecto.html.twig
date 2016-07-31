@@ -1,0 +1,56 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    {{ parent() }}
+    - Nuevo trayecto
+{% endblock %}
+
+
+{% block contenido %}
+    <div class="main-container inner-page">
+        <div class="container">
+            <div class="row clearfix">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3>Publica tu Trayecto para encontrar gente con la que compartir tu coche</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form action="publicarTrayecto.php" method="POST">
+                            <div class="form-group">
+                                <label>Ciudad de origen</label>
+                                <input name="origen" placeholder="Ciudad de origen..." class="form-control"></input>
+                            </div>
+                            <div class="form-group">
+                                <label>Ciudad de destino</label>
+                                <input name="destino" placeholder="Ciudad de destino..." class="form-control"></input>
+                            </div>
+                            <div class="form-group">
+                                <label>Salida desde calle</label>
+                                <input name="calle" placeholder="Salida desde calle..." class="form-control"></input>
+                            </div>
+                            <div class="form-group">
+                                <label>Hora de salida</label>
+                                <input name="hora" type="time" placeholder="Hora de salida(hh:mm)..." class="form-control"></input>
+                            </div>
+                            <div class="form-group">
+                                <label>Precio en €</label>
+                                <input placeholder="precio" name="precio" type="number" step="0.01" min="0.00" value="0.00" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Descipción</label>
+                                <textarea name="descripcion" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Plazas</label>
+                                <input class="form-control" name="plazas" type="number" step="1" value="1" min="1"></input>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-block btn-primary">Publicar trayecto</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
