@@ -10,15 +10,18 @@
     <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
     <link rel="shortcut icon" href="assets/ico/favicon.png">
     <title>{% block title %}Comparte Tu Coche - Bienvenido a la plataforma de compartir coche{% endblock %}</title>
-    <!-- Bootstrap core CSS -->
-    <link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="assets/css/style.css" rel="stylesheet">
-
-    <!-- styles needed for carousel slider -->
-    <link href="assets/css/owl.carousel.css" rel="stylesheet">
-    <link href="assets/css/owl.theme.css" rel="stylesheet">
+    
+    {% block css %}
+        <!-- Bootstrap core CSS -->
+        <link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+    
+        <!-- Custom styles for this template -->
+        <link href="assets/css/style.css" rel="stylesheet">
+    
+        <!-- styles needed for carousel slider -->
+        <link href="assets/css/owl.carousel.css" rel="stylesheet">
+        <link href="assets/css/owl.theme.css" rel="stylesheet">
+    {% endblock %}
 
     <!-- Just for debugging purposes. -->
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -96,6 +99,7 @@
 </div>
 <!-- /.wrapper -->
 
+{% block js %}
 <!-- Le javascript
 ================================================== -->
 
@@ -122,5 +126,6 @@
 <script src="assets/plugins/jquery.fs.selecter/jquery.fs.selecter.js"></script>
 <!-- include custom script for site  -->
 <script src="assets/js/script.js"></script>
+{% endblock %}
 </body>
 </html>
