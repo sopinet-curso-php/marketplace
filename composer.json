@@ -1,6 +1,7 @@
 {
     "require": {
         "twig/twig": "~1.0",
-        "doctrine/orm": "*"
+        "doctrine/orm": "*",
+        "facebook/php-sdk-v4": "^5.2"
     }
 }
