@@ -2,6 +2,7 @@
     "require": {
         "twig/twig": "~1.0",
         "doctrine/orm": "*",
-        "facebook/php-sdk-v4": "^5.2"
+        "facebook/php-sdk-v4": "^5.2",
+        "altorouter/altorouter": "^1.2"
     }
 }
