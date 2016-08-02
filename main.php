@@ -104,13 +104,6 @@ if ($_GET["posted"] != "" || $_GET['country'] != "") {
     $trayectosFiltrados = $trayectos;
 }
 
-// Ejemplo de Filtro personalizado
-// El filtro recortará una cadena con una longitud por defecto de 80 caracteres pero se podrá cambiar por parámetro
-$filter = new Twig_SimpleFilter('recortarTexto', function ($string, $length = 80) {
-    return substr($string,0,$length) . "...";
-});
-$twig->addFilter($filter);
-
 if ($_GET["page"] == "list") {
     echo $twig->render('list.html.twig', array(
             'year' => date('Y'),

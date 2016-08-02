@@ -54,7 +54,7 @@
                             <span class="icon-bar">
                             </span>
                         </button>
-                        <a href="index.html" class="navbar-brand logo logo-title">
+                        <a href="main.php" class="navbar-brand logo logo-title">
                             <!-- Original Logo will be placed here  -->
                             <span class="logo-icon">
                                 <i class="icon icon-search-1 ln-shadow-logo shape-0"></i>
@@ -68,10 +68,22 @@
                     <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
+                                {% if usuarioLogueado == null %}
+                                <a href="login.php">
+                                    <button type="button" class="btn btn-primary">Login con Facebook</button>
+                                </a>
+                                {% else %}
+                                    {{ usuarioLogueado.nombre }}
+                                    <a href="logout.php">Desconectar</a>
+                                {% endif %}
+                            </li>
+                            {% if usuarioLogueado != null %}
+                            <li>
                                 <a href="nuevoTrayecto.php">
-                                    <h3>Publica un trayecto</h3>
+                                    <button type="button" class="btn btn-default">Publica un trayecto</button>
                                 </a>
                             </li>
+                            {% endif %}
                         </ul>
                     </div>
                     <!--/.nav-collapse -->
