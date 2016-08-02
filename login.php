@@ -1,9 +1,9 @@
 <?php
+require __DIR__ . "/configuracion.php";
+
 if(!session_id()) {
     session_start();
 }
-
-require __DIR__ . "/configuracion.php";
 
 $fb = new Facebook\Facebook([
   'app_id' => '296532217365593',

@@ -21,6 +21,16 @@ class Persona {
     protected $avatar;
     
     /**
+     * @Column(type="string")
+     */
+    protected $facebookId;
+    
+    /**
+     * @Column(type="string")
+     */ 
+    protected $facebookAccessToken;
+    
+    /**
      * @OneToMany(targetEntity="Trayecto", mappedBy="conductor")
      */
      protected $trayectos;
@@ -121,5 +131,53 @@ class Persona {
     public function getAvatar()
     {
         return $this->avatar;
+    }
+
+    /**
+     * Set facebookId
+     *
+     * @param integer $facebookId
+     *
+     * @return Persona
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebookId = $facebookId;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookId
+     *
+     * @return integer
+     */
+    public function getFacebookId()
+    {
+        return $this->facebookId;
+    }
+
+    /**
+     * Set facebookAccessToken
+     *
+     * @param string $facebookAccessToken
+     *
+     * @return Persona
+     */
+    public function setFacebookAccessToken($facebookAccessToken)
+    {
+        $this->facebookAccessToken = $facebookAccessToken;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookAccessToken
+     *
+     * @return string
+     */
+    public function getFacebookAccessToken()
+    {
+        return $this->facebookAccessToken;
     }
 }
