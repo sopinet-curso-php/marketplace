@@ -21,12 +21,12 @@ class Persona {
     protected $avatar;
     
     /**
-     * @Column(type="string")
+     * @Column(type="string", nullable=true)
      */
     protected $facebookId;
     
     /**
-     * @Column(type="string")
+     * @Column(type="string", nullable=true)
      */ 
     protected $facebookAccessToken;
     

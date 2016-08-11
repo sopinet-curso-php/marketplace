@@ -60,8 +60,7 @@ class Trayecto {
         $this->origen = $p3;
         $this->destino = $p4;
         $this->calle = $p5;
-        $this->fechaPublicacion = new DateTime();
-        $this->fechaPublicacion->setTimestamp($p6);
+        $this->fechaPublicacion = $p6;
         $this->hora = $p7;
         $this->precio = $p8;
         $this->descripcion = $p9;

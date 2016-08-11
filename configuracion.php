@@ -31,9 +31,9 @@ $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
 $entityManager = EntityManager::create($dbParams, $config);
 
 // Incluimos el fichero para la entidad Trayecto
-include 'Entity/Trayecto.php';
+require_once 'Entity/Trayecto.php';
 // Incluimos el fichero para la entidad Persona
-include 'Entity/Persona.php';
+require_once 'Entity/Persona.php';
 
 if(!session_id()) {
     session_start();
@@ -61,4 +61,58 @@ if (isset($_SESSION['facebook_access_token'])) {
 }
 
 $twig->addGlobal('usuarioLogueado', $usuarioLogueado);
+$twig->addGlobal('year', date('Y'));
+
+// Declaramos las Rutas que vamos a utilizar
+$router = new AltoRouter();
+$router->setBasePath("/semana5");
+
+// Página principal
+$router->map('GET', '/', function() {
+    require __DIR__ . '/controllers/home.php';
+}, 'home');
+$twig->addGlobal("link_home", $router->generate('home'));
+
+// Listado de trayectos
+$router->map('GET', '/list', function() {
+    require __DIR__ . '/controllers/list.php';
+}, 'list');
+$twig->addGlobal("link_list", $router->generate('list'));
+
+// Carga de datos iniciales de ejemplo
+$router->map('GET', '/loadSampleData', function() {
+    require __DIR__ . '/controllers/loadSampleData.php';
+}, 'loadSampleData');
+$twig->addGlobal("link_loadSampleData", $router->generate('loadSampleData'));
+
+// Login con Facebook
+$router->map('GET', '/login', function() {
+    require __DIR__ . '/controllers/login.php';
+}, 'login');
+$twig->addGlobal("link_login", $router->generate('login'));
+
+// Comprobación de Login
+$router->map('GET', '/login-callback', function() {
+    require __DIR__ . '/controllers/login-callback.php';
+}, 'login-callback');
+$twig->addGlobal("link_login-callback", $router->generate('login-callback'));
+
+// Logout con Facebook
+$router->map('GET', '/logout', function() {
+    require __DIR__ . '/controllers/logout.php';
+}, 'logout');
+$twig->addGlobal("link_logout", $router->generate('logout'));
+
+// Nuevo Trayecto
+$router->map('GET', '/nuevoTrayecto', function() {
+    require __DIR__ . '/controllers/nuevoTrayecto.php';
+}, 'nuevoTrayecto');
+$twig->addGlobal("link_nuevoTrayecto", $router->generate('nuevoTrayecto'));
+
+// Guardar el nuevo Trayecto
+$router->map('POST', '/publicarTrayecto', function() {
+    require __DIR__ . '/controllers/publicarTrayecto.php';
+}, 'publicarTrayecto');
+$twig->addGlobal("link_publicarTrayecto", $router->generate('publicarTrayecto'));
+
 ?>

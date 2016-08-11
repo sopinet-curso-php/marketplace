@@ -54,7 +54,7 @@
                             <span class="icon-bar">
                             </span>
                         </button>
-                        <a href="main.php" class="navbar-brand logo logo-title">
+                        <a href="{{ link_home }}" class="navbar-brand logo logo-title">
                             <!-- Original Logo will be placed here  -->
                             <span class="logo-icon">
                                 <i class="icon icon-search-1 ln-shadow-logo shape-0"></i>
@@ -69,17 +69,17 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li>
                                 {% if usuarioLogueado == null %}
-                                <a href="login.php">
+                                <a href="{{ link_login }}">
                                     <button type="button" class="btn btn-primary">Login con Facebook</button>
                                 </a>
                                 {% else %}
                                     {{ usuarioLogueado.nombre }}
-                                    <a href="logout.php">Desconectar</a>
+                                    <a href="{{ link_logout }}">Desconectar</a>
                                 {% endif %}
                             </li>
                             {% if usuarioLogueado != null %}
                             <li>
-                                <a href="nuevoTrayecto.php">
+                                <a href="{{ link_nuevoTrayecto }}">
                                     <button type="button" class="btn btn-default">Publica un trayecto</button>
                                 </a>
                             </li>
